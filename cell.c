@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2019 Minho Jo <whitestone8214@gmail.com>
+	Copyright (C) 2019-2020 Minho Jo <whitestone8214@gmail.com>
 	
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Lesser General Public License as published by
@@ -84,7 +84,7 @@ void cell_delete(cell *one_of_them, char unallocate_data) {
 	if (one_of_them == NULL) return;
 	
 	cell *_cell = one_of_them;
-	if (unallocate_data == 1) free(_cell->data);
+	if (unallocate_data == 1) {if (_cell->data != NULL) {free(_cell->data); _cell->data = NULL;}}
 	if (_cell->previous != NULL) _cell->previous->next = _cell->next;
 	if (_cell->next != NULL) _cell->next->previous = _cell->previous;
 	free(_cell);
